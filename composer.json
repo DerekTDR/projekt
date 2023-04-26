@@ -1,7 +1,0 @@
-{
-    "name": "1358540/trutkowski",
-    "require": {
-        "steampixel/simple-php-router": "^0.7.1",
-        "twig/twig": "^3.5"
-    }
-}
