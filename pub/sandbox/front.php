@@ -11,15 +11,11 @@
          UŻYWAJ TYLKO DO CELÓW TESTOWYCH -->
 <?php
     $db = new mysqli('localhost', 'root', '', 'memy');
-
     $sql = "SELECT filename FROM post ORDER BY timestamp";
-
     $result = $db->query($sql);
-
     while($row = $result->fetch_assoc()) {
         echo "<img width='300' src=img/" . $row['filename'] . "><br>";
     }
-
     $db->close();
 ?>
 </body>

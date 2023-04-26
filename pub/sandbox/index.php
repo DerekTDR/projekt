@@ -16,62 +16,37 @@
         <input type="file" name="uploadedFile" id="uploadedFileInput">
         <input type="submit" value="Wyślij plik" name="submit">
     </form>
-
 <?php 
-
     $db = new mysqli('localhost', 'root', '', 'memy');
-
     if(isset($_POST['submit']))
     {
         $fileName = $_FILES['uploadedFile']['name'];
-
         $targetDir = "img/";
-
         $imageInfo = getimagesize($_FILES["uploadedFile"]["tmp_name"]);
         if(!is_array($imageInfo)) {
             die("Nieprawidłowy format obrazu!");
         }
-
         $imgString = file_get_contents($_FILES["uploadedFile"]["tmp_name"]);
-
         $gdImage = imagecreatefromstring($imgString);
-
-
-
         $targetExtension = pathinfo($fileName, PATHINFO_EXTENSION);
         $targetExtension = strtolower($targetExtension);
-
         $targetFileName = $fileName . hrtime(true);
         $targetFileName = hash("sha256", $targetFileName);
-
         $targetUrl = $targetDir . $targetFileName . "." . $targetExtension;      
         if(file_exists($targetUrl))
         {
             die("Plik o tej nazwie już istnieje");
         }
-        // move_uploaded_file($_FILES["uploadedFile"]["tmp_name"], $targetUrl);
-        // var_dump($_FILES);
         $targetUrl = $targetDir . $targetFileName . ".webp";  
         imagewebp($gdImage, $targetUrl);
-
         $fileName = $targetFileName . ".webp";
-
         $dateTime = DATE("Y-m-d H:i:s");
-
         $ip = $_SERVER['REMOTE_ADDR'];
-
         $sql = "INSERT INTO post (timestamp, filename, ip)
             VALUES ('$dateTime', '$fileName', '$ip')";
-
         $db->query($sql);
-
         $db->close();
     }
-
-    
-
-
-
 ?>
 </body>
 </html>

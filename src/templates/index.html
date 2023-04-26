@@ -1,7 +1,5 @@
 {% include 'header.html.twig' %}
-
 <h1>Posty</h1>
-
 <div id="pageContainer">
     <h1>{{pageTitle}}</h1>
     {# jeśli użytkownik jest zalogowany to pokaż #}
@@ -12,7 +10,6 @@
 <a href="upload">Wgraj mema</a>
 <br><br>
 {% for post in posts %}
-
 <div class='post'>
     <button type='button' class='comment'>
         💬
@@ -20,8 +17,7 @@
     <div class='vote'>
         <button onclick="location.href='like/{{ post.getId() }}'" class='upvote' type='button'>▲</button>
         <div class='votecounter'>{{ post.getLikes() }}</div>
-        <button onclick="location.href='dislike/{{ post.getId() }}'" class='downvote' type='button'>▼</button>
-        
+        <button onclick="location.href='dislike/{{ post.getId() }}'" class='downvote' type='button'>▼</button>        
     </div>
     <div class='title'>
         <h2>{{ post.getTitle() }}</h2>
@@ -30,5 +26,4 @@
     </div>
 <img class='img' width="200p" height="100px" src="{{ post.getFilename() }}"><br></div>
 {% endfor %}
-
 {% include 'footer.html.twig' %}

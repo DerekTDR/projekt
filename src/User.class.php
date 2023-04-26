@@ -4,14 +4,11 @@ class User {
     private int $id;
     //login / email użytkownika w bazie danych
     private string $email;
-
     //konstruktor
     public function __construct(int $id, string $email) {
         $this->id = $id;
         $this->email = $email;
-
     }
-
     //gettery
     public function getId() : int {
         return $this->id;
@@ -59,7 +56,6 @@ class User {
             return false;
         }
     }
-
     public static function isAuth() : bool {
         if (isset($_SESSION['user'])) {
             if ($_SESSION['user'] instanceof User) {
