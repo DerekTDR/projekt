@@ -1,4 +1,4 @@
-{%include 'header.html.twig'%}
+{% include 'header.html.twig' %}
 <div id="pageContainer">
     <table>
         <tr>
@@ -10,7 +10,7 @@
         </tr>
     {% for post in postList %}
         <tr>
-            <td><a href="admin/remove/{{post.getId() }}">Ukryj</a></td>
+            <td><a href="pub/admin/remove/{{post.getId() }}">Ukryj</a></td>
             <td>{{ post.getTimestamp() }}</td>
             <td>{{ post.getTitle() }}</td>
             <td>{{ post.getAuthorName() }}</td>
@@ -19,4 +19,4 @@
     {% endfor %}
     </table>
 </div>
-{%include 'footer.html.twig'%}
+{% include 'footer.html.twig' %}

@@ -67,7 +67,7 @@ Route::add('/login', function() {
 
 }, 'post');
 
-Route::add('/admin', function() {
+Route::add('/pub/admin', function() {
     global $twig;
     if(User::isAuth()) {
         $t = array( "postList" => Post::getPage(1, 100));
