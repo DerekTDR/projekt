@@ -33,6 +33,7 @@ Route::add('/upload', function() {
     $tempFileName = $_FILES['uploadedFile']['tmp_name'];
     $title = $_POST['title'];
     Post::upload($tempFileName, $title, $_POST['userId']);
+    header("Location: /projekt/pub");
     die();
 }, 'post');
 
@@ -46,6 +47,7 @@ Route::add('/register', function(){
     global $twig;
     if(isset($_POST['submit'])) {
         User::register($_POST['email'], $_POST['password']);
+        header("Location: /projekt/pub");
     }
 }, 'post');
 
@@ -59,6 +61,7 @@ Route::add('/login', function() {
     global $twig;
     if(isset($_POST['submit'])) {
         if (User::login($_POST['email'], $_POST['password'])) {
+            header("Location: /projekt/pub");
         } else {
             $t = array("message" => "Nieprawidłowy użytkownik lub hasło");
             $twig->display("login.html", $t);
@@ -67,7 +70,7 @@ Route::add('/login', function() {
 
 }, 'post');
 
-Route::add('/pub/admin', function() {
+Route::add('/admin', function() {
     global $twig;
     if(User::isAuth()) {
         $t = array( "postList" => Post::getPage(1, 100));
@@ -81,6 +84,7 @@ Route::add('/pub/admin', function() {
 Route::add('/admin/remove/([0-9]*)', function($id) {
     if(User::isAuth()) {
         Post::remove($id);
+        header("Location: /projekt/admin");
     } else {
         http_response_code(403);
     }
@@ -92,6 +96,7 @@ Route::add('/like/([0-9]*)', function($post_id) {
     } else {
         $user_id = $_SESSION['user']->getId();
         $like = new Likes($post_id, $user_id, 1);
+        header("Location: /projekt/pub");
     }
 });
 
@@ -101,6 +106,7 @@ Route::add('/dislike/([0-9]*)', function($post_id) {
     } else {
         $user_id = $_SESSION['user']->getId();
         $like = new Likes($post_id, $user_id, -1);
+        header("Location: /projekt/pub");
     }
 });
 
