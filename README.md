@@ -6,7 +6,9 @@
 - Zainstalować `symfony/symfony`
 - Utworzyć folder *img* w *pub*, czyli `./pub/img` (nie jest dodany przez [.gitignore](./.gitignore))
 - Uruchomić Apache oraz MySQL (polecam XAMPP)
-- Dodać bazę danych z pliku `./sql/cms.sql`
+- Zmienić linijkę ';extension=gd' -> 'extension=gd' w `php.ini` poprzez wejście w program XAMPP, w serwisie Apache -> przycisk Config -> `php.ini`.
+- Restart Apache i MySQL
+- Dodać bazę danych o nazwie 'cms' z pliku `./sql/cms.sql`
 - Do zarejestrowania się wejdź do `localhost/projekt/pub/register/`
 - Do zalogownia się wejdź do `localhost/projekt/pub/login/`
 - Do panelu admina wejdź do `localhost/projekt/pub/admin/`
