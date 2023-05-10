@@ -1,9 +1,7 @@
 # projekt
 **Instalacja**
 - Zainstalować `composer`
-- Zainstalować `steampixel/simple-php-router`
-- Zainstalować `twigphp/twig`
-- Zainstalować `symfony/symfony`
+- Wpisać w terminal `composer install --ignore-platform-reqs`
 - Utworzyć folder *img* w *pub*, czyli `./pub/img` (nie jest dodany przez [.gitignore](./.gitignore))
 - Uruchomić Apache oraz MySQL (polecam XAMPP)
 - Zmienić linijkę ';extension=gd' -> 'extension=gd' w `php.ini` poprzez wejście w program XAMPP, w serwisie Apache -> przycisk Config -> `php.ini`.
